@@ -41,13 +41,13 @@ const Hero = () => {
         </div>
       </Container>
       <Container >
-        <div style={{background: 'whiteSmoke', marginTop:'50px', fontFamily: 'Roboto' }} className="flex flex-col p-12 shadow-lg">
-          <div className="flex flex-row justify-between">
-          <div className="px-16" style={{width: '50%'}}>
-          <h1 style={{color: 'red', fontSize: '20px', padding: '8px 0',fontSize: '24px'}}>Our Services</h1>
-          <p className="text-4xl font-bold leading-snug tracking-tight text-gray-800  lg:text-3xl lg:leading-tight xl:text-5xl xl:leading-tight dark:text-white">We Provide Comprehensive Early Childhood Education</p>
+        <div style={{background: 'white', marginTop:'10px', fontFamily: 'Roboto' }} className="flex flex-col p-12 shadow-sm">
+          <div className="flex flex-row justify-center">
+          <div className="mb-12">
+          {/* <h1 style={{color: 'red', fontSize: '20px', padding: '8px 0',fontSize: '24px'}}>Our Services</h1> */}
+          <p className="text-4xl font-bold leading-snug tracking-tight text-gray-800  lg:text-3xl lg:leading-tight xl:text-4xl xl:leading-tight dark:text-white">We Provide Comprehensive Early Childhood Education</p>
          </div>
-         <div style={{width: '50%', padding: '10px 30px'}} >
+         {/* <div style={{width: '50%', padding: '10px 30px'}} >
          <p className="text-gray-500">Comprehensive early childhood education, emphasizing holistic development through a nurturing environment, tailored curriculum, character building, and parental engagement, fostering hopeful minds and preparing young learners for brighter futures</p>
          <div className="flex flex-row justify-around" >
           <div>
@@ -59,14 +59,14 @@ const Hero = () => {
          <p><span style={{color: 'red', fontSize: '24px', padding: '0 10px'}}>&#x2192;</span>Confidence Building.</p>
           </div>
          </div>
-         </div>
+         </div> */}
       
           </div>
         <div className="flex flex-row">
-        <ServiceCard icon="/img/graduation.png" title={"Empower"} detail={"Empowering students is a crucial aspect of education. When students feel empowered,"}/>  
-        <ServiceCard icon="/img/graduation.png" title={"Engage"} detail={"Engaging students in the learning process is a crucial element in ensuring their success."}/>  
-        <ServiceCard icon="/img/graduation.png" title={"Graduation"} detail={"Graduation students are those who have completed the requirements for their degree or diploma in a particular field of study."}/>  
-        <ServiceCard icon="/img/award.png" title={"Awarding"} detail={"Giving students rewards for their efforts suggests that their hard work is appreciated."}/>  
+        <ServiceCard defaultIcon="/img/empower.png" hoverIcon="/img/empower-white.png" defaultTitle={"Empower"} defaultDetail={"Empowering students is a crucial aspect of education. When students feel empowered,"}/>  
+        <ServiceCard defaultIcon="/img/engage.png" hoverIcon="/img/engage-white.png" defaultTitle={"Engage"} defaultDetail={"Engaging students in the learning process is a crucial element in ensuring their success."}/>  
+        <ServiceCard defaultIcon="/img/graduation.png" hoverIcon="/img/graduation-white.png" defaultTitle={"Graduation"} defaultDetail={"Graduation students are those who have completed the requirements for their degree or diploma in a particular field of study."}/>  
+        <ServiceCard defaultIcon="/img/awards.png" hoverIcon="/img/awards-white.png" defaultTitle={"Awarding"} defaultDetail={"Giving students rewards for their efforts suggests that their hard work is appreciated."}/>  
         </div>  
         </div>
       </Container>
