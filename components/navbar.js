@@ -10,6 +10,7 @@ const Navbar = () => {
     "Admission",
     "Our School",
     "Practical Informations",
+    "Blogs"
   ];
 
   return (
