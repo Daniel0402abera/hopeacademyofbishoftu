@@ -24,16 +24,15 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      
       <Hero />
       <SectionTitle
-        pretitle="Nextly Benefits"
-        title=" Why should you use this landing page">
-        Nextly is a free landing page & marketing website template for startups
-        and indie projects. Its built with Next.js & TailwindCSS. And its
-        completely open-source.
+        pretitle="Our Academy"
+        title=" Why should you choose Hope Academy?">
+        Sound Foundation for Life, Scientifically Design Curriculum For Perfect Holistic Development.<br/> We are committed to shaping the future through our children.
       </SectionTitle>
       <Benefits data={benefitOne} />
-      <Benefits imgPos="right" data={benefitTwo} />
+      {/* <Benefits imgPos="right" data={benefitTwo} /> */}
       <SectionTitle
         pretitle="Watch a video"
         title="Learn how to fullfil your needs">

@@ -1,103 +1,121 @@
 import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
-import Image from "next/image"
-import { Disclosure } from "@headlessui/react";
+import Image from "next/image";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [activeLink, setActiveLink] = useState(null);
+
+  const handleHover = (index) => {
+    setActiveLink(index);
+  };
+
+  const handleLeave = () => {
+    setActiveLink(null);
+  };
+
   const navigation = [
-    "Home",
-    "About Us",
-    "Admission",
-    "Our School",
-    "Practical Informations",
+    { name: "Home", link: "/" },
+    {
+      name: "About Us",
+      link: "/about",
+      subLinks: [
+        { name: "Mission and Vision", link: "/about/mission-vision" },
+        { name: "Our Values", link: "/about/values" },
+        { name: "Our Team", link: "/about/team" },
+        { name: "What Makes Us Different", link: "/about/different" },
+      ],
+    },
+    {
+      name: "Admission",
+      link: "/admission",
+      subLinks: [
+        { name: "Our Fee", link: "/admission/fee" },
+        { name: "Student Registration", link: "/admission/registration" },
+      ],
+    },
+    
+    {
+      name: "Our School",
+      link: "/school",
+      subLinks: [
+        { name: "Overview", link: "/school/overview" },
+        { name: "Curriculum", link: "/school/curriculum" },
+        { name: "Our Community", link: "/school/community" },
+      ],
+    },
+    {
+      name: "Blog",
+      link: "/blog",
+    },
+    { name: "Practical Informations", link: "/practical-info", 
+  
+    subLinks: [
+      { name: "Academic Calander", link: "/practical-info/academic" },
+      { name: "Uniform", link: "/practical-info/uniform" },
+      { name: "Facilities", link: "/practical-info/facilities" },
+    ],
+  },
+ 
   ];
 
   return (
-    <div  className="w-full">
-      <nav  style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '20px 60px'}}>
-        {/* Logo  */}
-        <Disclosure>
-          {({ open }) => (
-            <>
-              <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
-                <Link href="/">
-                  <span className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
-                    <span>
-                      <Image
-                        src="/img/h.png"
-                        alt="H"
-                        width="96"
-                        height="96"
-                        className="w-12"
-                      />
-                    </span>
-                    <span style={{color: 'darkblue'}}>Hope Academy</span>
-                  </span>
-                </Link>
-
-                <Disclosure.Button
-                  aria-label="Toggle Menu"
-                  className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700">
-                  <svg
-                    className="w-6 h-6 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24">
-                    {open && (
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                      />
-                    )}
-                    {!open && (
-                      <path
-                        fillRule="evenodd"
-                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                      />
-                    )}
-                  </svg>
-                </Disclosure.Button>
-
-                <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
-                  <>
-                    {navigation.map((item, index) => (
-                      <Link key={index} href="/" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
-                          {item}
-                      </Link>
-                    ))}
-                    <Link href="/" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5">         
-                        Get Started
-                    </Link>
-                  </>
-                </Disclosure.Panel>
-              </div>
-            </>
-          )}
-        </Disclosure>
-
-        {/* menu  */}
-        <div style={{display: 'flex', flexDirection: 'row'}}>
-        <div className="hidden mx-12 text-center lg:flex lg:items-center">
-          <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
-            {navigation.map((menu, index) => (
-              <li className="mr-0 nav__item" key={index}>
-                <Link href="/" className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
-                    {menu}
-                </Link>
-              </li>
-            ))}
-          </ul>
+    <div className="w-full">
+      <nav className="flex items-center justify-between px-12 py-6">
+        {/* Logo */}
+        <div className="ml-12">
+        <Link href="/">
+          <p className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
+            <Image
+              src="/img/h.png"
+              alt="H"
+              width="96"
+              height="96"
+              className="w-12"
+            />
+            <span style={{ color: "darkblue" }}>Hope Academy</span>
+          </p>
+        </Link>
         </div>
+        
+        {/* Main Navigation */}
+        <ul className="hidden space-x-16 lg:flex">
+          {navigation.map((item, index) => (
+            <li
+              key={index}
+              className="relative"
+              onMouseEnter={() => handleHover(index)}
+              onMouseLeave={handleLeave}
+            >
+              <Link href={item.link}>
+                <p className="text-gray-800 dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none">
+                  {item.name}
+                </p>
+              </Link>
+              {activeLink === index && item.subLinks && (
+                <ul style={{minWidth: '250px'}} className="flex flex-col absolute py-2">
+                  {item.subLinks.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <Link href={subItem.link}>
+                        <p className="block px-2 py-2 text-gray-800 dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none">
+                          {subItem.name}
+                        </p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
 
-        <div className="hidden lg:flex nav__item">
-         
+        {/* Theme Changer */}
+        <div className="lg:block">
           <ThemeChanger />
         </div>
-        </div>
-       
       </nav>
     </div>
   );
-}
+};
 
 export default Navbar;

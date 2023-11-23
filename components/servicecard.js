@@ -17,7 +17,7 @@ const ServiceCard = ({ defaultIcon, defaultTitle, defaultDetail, hoverIcon }) =>
 
   return (
     <div
-      className="w-72 h-80 m-9 rounded overflow-hidden shadow-lg relative overflow-hidden"
+      className="w-72 h-80  m-9 rounded overflow-hidden shadow-lg relative overflow-hidden"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
