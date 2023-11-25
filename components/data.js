@@ -35,28 +35,29 @@ const benefitOne = {
     },
   ],
 };
-
 const benefitTwo = {
-  title: "Offer more benefits here",
-  desc: "You can use this same layout with a flip image to highlight your rest of the benefits of your product. It can also contain an image or Illustration as above section along with some bullet points.",
-  image: benefitTwoImg,
+  title: "Confidence Building",
+  desc: "Developing self-expression and confidence through fashion shows, fancy dress, role plays etc.",
+  image: benefitOneImg,
   bullets: [
     {
-      title: "Mobile Responsive Template",
-      desc: "Nextly is designed as a mobile first responsive template.",
-      icon: <DevicePhoneMobileIcon />,
+      title: "Quarterly Stage presentations of the class to showcase the talent of child as an individual and in groups",
+      desc: "Then explain the first point breifly in one or two lines.",
+      icon: <Lottie animationData={curriculum}/>
     },
     {
-      title: "Powered by Next.js & TailwindCSS",
-      desc: "This template is powered by latest technologies and tools.",
-      icon: <AdjustmentsHorizontalIcon />,
+      title: "Regular acknowledgement through specially designed certificates on Appreciation Day",
+      desc: "Here you can add the next benefit point.",
+      icon: <Lottie animationData={innovation} />,
     },
     {
-      title: "Dark & Light Mode",
-      desc: "Nextly comes with a zero-config light & dark mode. ",
-      icon: <SunIcon />,
+      title: "Participation in events & celebrations ensures socio-emotional development",
+      desc: "This will be your last bullet point in this section.",
+      icon: <Lottie animationData={action}/>,
     },
   ],
 };
+
+
 
 export {benefitOne, benefitTwo};

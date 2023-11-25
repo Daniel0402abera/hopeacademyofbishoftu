@@ -21,36 +21,21 @@ export default function Footer() {
               {" "}
               <Link href="/" className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
                     <Image
-                      src="/img/logo.svg"
+                      src="/img/h.png"
                       alt="N"
                       width="32"
                       height="32"
                       className="w-8"
                     />
-                  <span>Nextly</span>
+                  <span style={{color: 'darkblue'}}>Hope Academy</span>
               </Link>
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              Nextly is a free landing page & marketing website
-              template for startups and indie projects. Its built with
-              Next.js & TailwindCSS. And its completely open-source.
+            Within our educational community, we prioritize nurturing hopeful hearts, instilling resilience and positivity, alongside empowering young minds to envision and strive for brighter, more promising futures.
             </div>
 
-            <div className="mt-5">
-              <a
-                href="https://vercel.com/?utm_source=web3templates&utm_campaign=oss"
-                target="_blank"
-                rel="noopener"
-                className="relative block w-44">
-                <Image
-                  src="/img/vercel.svg"
-                  alt="Powered by Vercel"
-                  width="212"
-                  height="44"
-                />
-              </a>
-            </div>
+          
           </div>
 
           <div>
@@ -107,20 +92,9 @@ export default function Footer() {
         </div>
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
-          Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
-          <a
-            href="https://web3templates.com/"
-            target="_blank"
-            rel="noopener">
-            Web3Templates.
-          </a>{" "}
-          Illustrations from{" "}
-          <a
-            href="https://www.glazestock.com/"
-            target="_blank"
-            rel="noopener ">
-            Glazestock
-          </a>
+          Copyright © {new Date().getFullYear()}
+          
+       
         </div>
       </Container>
       {/* Do not remove this */}

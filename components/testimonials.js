@@ -13,10 +13,9 @@ const Testimonials  = () => {
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Share a real <Mark>testimonial</Mark>
-              that hits some of your benefits from one of your popular customer.
+              Registration is Open <Mark>Hope Academy</Mark>
+              be early applicant before the place are filled.
             </p>
-
             <Avatar
               image={userOneImg}
               name="Sarah Steiner"
