@@ -498,6 +498,7 @@ export interface ApiStudentStudent extends Schema.CollectionType {
     singularName: 'student';
     pluralName: 'students';
     displayName: 'Student';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -516,6 +517,12 @@ export interface ApiStudentStudent extends Schema.CollectionType {
       ['LKG', 'UKG', 'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8']
     > &
       Attribute.Required;
+    applyingForYear: Attribute.String & Attribute.Required;
+    motherTitle: Attribute.String;
+    motherFullName: Attribute.String & Attribute.Required;
+    fatherTitle: Attribute.String;
+    fatherFullName: Attribute.String;
+    dateOfSubmission: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
