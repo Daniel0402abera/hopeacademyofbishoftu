@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
 const CardContainer = styled.div`
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
   font-family: roboto;
   margin: 20px;
-  padding: 20px;
-  width: 400px;
+  padding: 50px;
+  width: 100%;
   min-height: 400px;'
 `;
 
@@ -39,10 +39,7 @@ const ReadMoreButton = styled.button`
   cursor: pointer;
   outline: none;
 `;
-const BlogCard = ({ imageUrl, title, description, readMore }) => {
-
-
-  console.log(readMore)
+const BlogDetails = ({ imageUrl, title, description }) => {
   return (
     <CardContainer>
       <BlogImage src={imageUrl} alt={title} />
@@ -50,8 +47,7 @@ const BlogCard = ({ imageUrl, title, description, readMore }) => {
         <BlogTitle>{title}</BlogTitle>
         <BlogDescription>{description.slice(0,40)}...</BlogDescription>
       </BlogContent>
-      <Link href={readMore}>Read More</Link>
     </CardContainer>
   );
 };
-export default BlogCard;
+export default BlogDetails;

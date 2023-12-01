@@ -23,8 +23,7 @@ const Home = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      
+    
       <Hero />
       <SectionTitle
         pretitle="Our Academy"
@@ -36,10 +35,8 @@ const Home = () => {
       {/* <Benefits imgPos="right" data={benefitTwo} /> */}
       <SectionTitle
         pretitle="Watch a video"
-        title="Learn how to fullfil your needs">
-        This section is to highlight a promo or demo video of your product.
-        Analysts says a landing page with video has 3% more conversion rate. So,
-        don&apos;t forget to add one. Just like this.
+        title="Overview of the school">
+        This section is to highlight a promo or demo video of your school.
       </SectionTitle>
       <Video />
       <SectionTitle
@@ -47,8 +44,7 @@ const Home = () => {
       </SectionTitle>
       <Testimonials />
       <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
+        Here is frequently asked questions by our students, family and our school community
       </SectionTitle>
       <Faq />
       <Footer />
