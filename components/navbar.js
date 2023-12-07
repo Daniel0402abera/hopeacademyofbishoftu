@@ -31,7 +31,7 @@ const Navbar = () => {
       link: "/admission",
       subLinks: [
         { name: "Our Fee", link: "/admission/fee" },
-        { name: "Student Registration", link: "/admission/registration" },
+        { name: "Student Registration", link: "/registration" },
       ],
     },
     
