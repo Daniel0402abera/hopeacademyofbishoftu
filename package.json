@@ -1,7 +1,7 @@
 {
-  "name": "nextly-template",
+  "name": "Hope School",
   "version": "0.1.0",
-  "description": "Nextly Landing Page Template",
+  "description": "Hope School Landing page project",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gituhb.com/web3templates/nextly-template"
+    "url": ""
   },
   "keywords": [
     "nextjs",
