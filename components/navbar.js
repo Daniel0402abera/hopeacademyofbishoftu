@@ -18,7 +18,7 @@ const Navbar = () => {
     { name: "Home", link: "/" },
     {
       name: "About Us",
-      link: "/about",
+      link: "#",
       subLinks: [
         { name: "Mission and Vision", link: "/about/mission-vision" },
         { name: "Our Values", link: "/about/values" },
@@ -28,7 +28,7 @@ const Navbar = () => {
     },
     {
       name: "Admission",
-      link: "/admission",
+      link: "#",
       subLinks: [
         { name: "Our Fee", link: "/admission/fee" },
         { name: "Student Registration", link: "/registration" },
@@ -37,7 +37,7 @@ const Navbar = () => {
     
     {
       name: "Our School",
-      link: "/school",
+      link: "#",
       subLinks: [
         { name: "Overview", link: "/school/overview" },
         { name: "Curriculum", link: "/school/curriculum" },
@@ -48,7 +48,7 @@ const Navbar = () => {
       name: "Blog",
       link: "/blog",
     },
-    { name: "Practical Informations", link: "/practical-info", 
+    { name: "Practical Informations", link: "#", 
   
     subLinks: [
       { name: "Academic Calander", link: "/practical-info/academic" },
