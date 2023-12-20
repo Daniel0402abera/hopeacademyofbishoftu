@@ -30,6 +30,8 @@ const StyledLink = styled.p`
 `;
 
 const NotFoundPage = () => {
+
+  
   return (
     <Container>
       <Title>404 - Not Found</Title>
