@@ -3,6 +3,7 @@ import BlogCard from "../../components/blogcard";
 import styled from 'styled-components';
 import Navbar from "../../components/navbar";
 import useGetData from "../api/useGetData";
+import CircularProgress from '@mui/material/CircularProgress';
 const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -12,6 +13,7 @@ const CardContainer = styled.div`
 `;
 
 export default function Blog(){
+ 
   let endpoint = `https://hopeschool.onrender.com/api/blogs?populate=*`;
   const {
     data: blog,
@@ -20,6 +22,13 @@ export default function Blog(){
     isFetching: fetching,
   } = useGetData(endpoint);
   const blogs = blog?.data;
+  if (loading) {
+    return  <div style={{display:'flex',justifyContent:'center', alignItems:'center', height:'50vh'}} >
+      <CircularProgress color="primary" />
+    </div>;
+  }
+
+
   return(
   <>
 

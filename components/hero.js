@@ -22,7 +22,7 @@ const Hero = () => {
               <Link
                 style={{background: '#00008b'}}
                 href="/registration"
-                target="_blank"
+                // target="_blank"
                 rel="noopener"
                 className="px-8 py-4 text-lg font-medium text-center text-white  rounded-md ">
                 Make an Application
