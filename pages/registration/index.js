@@ -1,8 +1,11 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import styled from 'styled-components';
 import Image from 'next/image';
+import usePostData from '../api/usePostData';
 const StyledInput = styled.input`
-
   appearance: none;
   outline: none;
   border-radius: 0px;
@@ -137,18 +140,55 @@ const Address = styled.div`
 `;
 
 const StudentRegistration = () => {
-  // State variables for form fields
-  const [studentName, setStudentName] = React.useState('');
-  const [dob, setDOB] = React.useState('');
-  const [gender, setGender] = React.useState('');
-  const [nationality, setNationality] = React.useState('');
-  const [motherTongue, setMotherTongue] = React.useState('');
-  // ... other state variables for the remaining fields
+ const {
+    postData,
+    isLoading,
+    error,
+    isSuccess
+  } = usePostData();
+  const formik = useFormik({
+    initialValues: {
+        "firstName": "",
+        "lastName": "",
+        "middleName": "",
+        "dob": "2023-01-01",
+        // "placeOfBirth": "fincha",
+        "gender": "Male",
+        "nationality": "",
+        //religion is missing
+        "motherTongue": "",
+        "otherLanguage": "",
+        //english fluency
+        "currentGradeLevel": "G1",
+        "GradeLevelApplyingFor": "G1",
+        "applyingForYear": "",
+        //remove mother title
+        // "motherTitle": "Ms",
+        "motherFullName": "",
+        "email": "hope@gmail.com",
+        //remove father title
+        // "fatherTitle": "Bikala",
+        "fatherFullName": "",
+        "NameOfCurrentSchool": "",
+        "CountryOfCurrentSchool": "",
+        "YearOrGradeOfLeavingCurrentSchool": "2023-01-01",
+        // "specialEducationalSupport": true,
+        "specialEducationalSupportDetails": "",
+        //missing fields here
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Logic to handle form submission
-  };
+        "religion": "",
+    },
+      onSubmit: async (values, { setSubmitting }) => {
+      try {
+        const result = await postData('https://hopeschool.onrender.com/api/students', values); 
+        console.log('Form submitted successfully:', result);
+      } catch (error) {
+        console.error('Error submitting form:', error.message);
+      } finally {
+        setSubmitting(false);
+      }
+    },
+  }) 
 
   return (
     <Page>
@@ -161,7 +201,7 @@ const StudentRegistration = () => {
               height="150"
               className="w-20"
             />
-              <h1 style={{fontWeight: '700', fontSize: '18px', color: 'darkblue'}}>PRE- APPLICATION FORM HOPE ACADEMY OF<br></br> BOSHOFTU</h1>
+              <h1 style={{fontWeight: '700', fontSize: '18px', color: 'darkblue'}}>PRE- APPLICATION FORM HOPE ACADEMY OF<br></br> BISHOFTU</h1>
           </Header>
           <Address>
             <h1>BISHOFTU, ETHIOPIA</h1>
@@ -171,7 +211,7 @@ const StudentRegistration = () => {
           <p style={{  display: 'flex', margin: '15px 0px', justifyContent: 'center', textAlign: 'start'}}>To ensure that your child's application is processed efficiently, please fill this form completely with the necessary information. Please note that applications cannot be processed unless ALL sections of the Application Form are completed. If a section does not apply, please mark as "N/A" (not applicable) thus indicating that the information in the section has been noted.</p>
 
       
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         {/* Student Information */}
         <h1 style={{fontWeight: '600', margin: '15px 0px'}}>&#x2022;&nbsp;STUDENT INFOROMATION</h1>
         <div>
@@ -183,36 +223,37 @@ const StudentRegistration = () => {
            style={{width: '32%'}} 
           type="text"
           placeholder='First'
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          name='firstName'
+          value={formik.values.firstName}
+          onChange={formik.handleChange}
         />
         <StyledInput
         style={{width: '32%'}} 
           type="text"
-          value={studentName}
+          name='middleName'
+          value={formik.values.middleName}
           placeholder='Middle'
-          onChange={(e) => setStudentName(e.target.value)}
+          onChange={formik.handleChange}
         />
         <StyledInput
         style={{width: '32%'}} 
           placeholder='Last'
           type="text"
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          name='lastName'
+          value={formik.values.lastName}
+          onChange={formik.handleChange}
         />
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px'}}>
           <div style={{display: 'flex', flexDirection: 'column', width: '66%'}}>
           <StyledLabel>Date of Birth</StyledLabel>
-         
           <StyledInput
           type="date"
-          value={dob}
-          onChange={(e) => setDOB(e.target.value)}
+          name='dob'
+          value={formik.values.dob}
+          onChange={formik.handleChange}
         />
-        
           </div>
-          
           <div style={{display: 'flex', flexDirection: 'column', width: '32%', justifyContent: 'center'}}>
           <StyledLabel>Gender</StyledLabel>
            <div>
@@ -220,28 +261,26 @@ const StudentRegistration = () => {
             <input 
               className='m-2'
               type="radio"
-              value="male"
-              checked={gender === 'male'}
-              onChange={(e) => setGender(e.target.value)}
+              name='gender'
+              checked={formik.values.gender === 'male'}
+              value={formik.values.gender}
+              onChange={formik.handleChange}
             />
             Male
           </label>
-          <label >
+          <label>
             <input
               className='m-2'
               type="radio"
-              value="female"
-              checked={gender === 'female'}
-              onChange={(e) => setGender(e.target.value)}
+              name='gender'
+              value={formik.values.gender}
+              checked={formik.values.gender === 'female'}
+              onChange={formik.handleChange}
             />
             Female
           </label>
            </div>
-          
-  
           </div>
-
-         
         </div>
         <div>
           <StyledLabel>Religion</StyledLabel>
@@ -250,9 +289,10 @@ const StudentRegistration = () => {
             <input
               className='m-2'
               type="radio"
-              value="Muslim"
-              checked={gender === 'muslim'}
-              onChange={(e) => setGender(e.target.value)}
+              name='religion'
+              value={formik.values.religion}
+              checked={formik.values.religion === 'muslim'}
+              onChange={formik.handleChange}
             />
             Muslim
           </label>
@@ -261,9 +301,10 @@ const StudentRegistration = () => {
             <input
               className='m-2'
               type="radio"
-              value="christian"
-              checked={gender === 'christian'}
-              onChange={(e) => setGender(e.target.value)}
+              name='religion'
+              value={formik.values.religion}
+              checked={formik.values.religion === 'christian'}
+              onChange={formik.handleChange}
             />
             Christian
           </label>
@@ -272,8 +313,10 @@ const StudentRegistration = () => {
           style={{width: '75%'}}
           type="text"
           placeholder='Other'
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          name='religion'
+          value={formik.values.religion}
+          checked={formik.values.religion==='other'}
+          onChange={formik.handleChange}
         />
         </div>
           </div>
@@ -283,21 +326,20 @@ const StudentRegistration = () => {
       <StyledLabel>Nationality</StyledLabel>
       <StyledInput
           type="text"
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          name='nationality'
+          value={formik.values.nationality}
+          onChange={formik.handleChange}
         />
-
       </div>
 
       {/* row 3 */}
      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px'}}>
           <div style={{display: 'flex', width: '32%', flexDirection: 'column'}}>
           <StyledLabel>MotherTongue</StyledLabel>
-         
           <StyledInput
           type="text"
-          value={dob}
-          onChange={(e) => setDOB(e.target.value)}
+          // value={dob}
+          // onChange={(e) => setDOB(e.target.value)}
         />
          
           </div>
@@ -314,8 +356,8 @@ const StudentRegistration = () => {
               className='m-2'
               type="radio"
               value="Muslim"
-              checked={gender === 'muslim'}
-              onChange={(e) => setGender(e.target.value)}
+              // checked={gender === 'muslim'}
+              // onChange={(e) => setGender(e.target.value)}
             />
             Yes
           </label>
@@ -325,8 +367,8 @@ const StudentRegistration = () => {
               className='m-2'
               type="radio"
               value="christian"
-              checked={gender === 'christian'}
-              onChange={(e) => setGender(e.target.value)}
+              // checked={gender === 'christian'}
+              // onChange={(e) => setGender(e.target.value)}
             />
               No
           </label>
@@ -340,34 +382,56 @@ const StudentRegistration = () => {
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px'}}>
           <div style={{display: 'flex', width: '32%', flexDirection: 'column'}}>
           <StyledLabel>Current Grade Level</StyledLabel>
-            <StyledSelect>
+            <StyledSelect
+            name='currentGradeLevel'
+            value={formik.values.currentGradeLevel}
+            onChange={formik.handleChange}
+            >
               <option disabled>--- select grade ----</option>
-              <option>Grade 1</option>
-              <option>Grade 2</option>
+              <option>LKG</option>
+              <option>UKG</option>
+              <option>G1</option>
+              <option>G2</option>
+              <option>G3</option>
+              <option>G4</option>
+              <option>G5</option>
+              <option>G6</option>
+              <option>G7</option>
+              <option>G8</option>
             </StyledSelect>
           
           </div>
           <div style={{display: 'flex', width: '32%', flexDirection: 'column'}}>
           <StyledLabel>Grade level applying for?</StyledLabel>
         
-            <StyledSelect>
+            <StyledSelect
+            name='GradeLevelApplingFor'
+            value={formik.values.GradeLevelApplyingFor}
+            onChange={formik.handleChange}
+            >
               <option disabled>--- select grade ----</option>
-              <option>Grade 1</option>
-              <option>Grade 2</option>
+              <option>LKG</option>
+              <option>UKG</option>
+              <option>G1</option>
+              <option>G2</option>
+              <option>G3</option>
+              <option>G4</option>
+              <option>G5</option>
+              <option>G6</option>
+              <option>G7</option>
+              <option>G8</option>
             </StyledSelect>
           
           </div>
           <div style={{display: 'flex', width: '32%', flexDirection: 'column'}}>
           <StyledLabel>Applying for (Year)</StyledLabel>
-            <StyledSelect>
-              <option disabled>--- select grade ----</option>
-              <option>Grade 1</option>
-              <option>Grade 2</option>
-            </StyledSelect>
-
+            <StyledInput
+              type='date'
+              name='applyingForYear'
+              value={formik.values.applyingForYear}
+              onChange={formik.handleChange}
+            />
           </div>
-          
-          
         </div>
         </div>
 
@@ -382,22 +446,23 @@ const StudentRegistration = () => {
            style={{width: '32%'}} 
           type="text"
           placeholder='First'
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          name='motherFullName'
+          value={formik.motherFullName}
+          onChange={formik.handleChange}
         />
         <StyledInput
         style={{width: '32%'}} 
           type="text"
-          value={studentName}
+          // value={studentName}
           placeholder='Middle'
-          onChange={(e) => setStudentName(e.target.value)}
+          // onChange={(e) => setStudentName(e.target.value)}
         />
         <StyledInput
         style={{width: '32%'}} 
           placeholder='Last'
           type="text"
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          // value={studentName}
+          // onChange={(e) => setStudentName(e.target.value)}
         />
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px',}}>
@@ -407,7 +472,11 @@ const StudentRegistration = () => {
          </div>
          <div style={{display: 'flex', width: '49%', flexDirection: 'column', justifyContent: 'space-between', margin: '15px 0px',}}>
          <StyledLabel>Email</StyledLabel>
-         <StyledInput />
+         <StyledInput 
+         name='email'
+         value={formik.values.email}
+         onChange={formik.handleChange}
+         />
          </div>
         </div>
         
@@ -426,22 +495,23 @@ const StudentRegistration = () => {
            style={{width: '32%'}} 
           type="text"
           placeholder='First'
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          name='fatherFullName'
+          value={formik.values.fatherFullName}
+          onChange={formik.handleChange}
         />
         <StyledInput
         style={{width: '32%'}} 
           type="text"
-          value={studentName}
+          // value={studentName}
           placeholder='Middle'
-          onChange={(e) => setStudentName(e.target.value)}
+          // onChange={(e) => setStudentName(e.target.value)}
         />
         <StyledInput
         style={{width: '32%'}} 
           placeholder='Last'
           type="text"
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          // value={studentName}
+          // onChange={(e) => setStudentName(e.target.value)}
         />
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px',}}>
@@ -467,9 +537,12 @@ const StudentRegistration = () => {
         
         <StyledInput
           type="text"
-          placeholder='First'
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          placeholder='Name of School'
+          name='NameOfCurrentSchool'
+          value={formik.values.NameOfCurrentSchool}
+          onChange={formik.handleChange}
+          // value={studentName}
+          // onChange={(e) => setStudentName(e.target.value)}
         />
         </div>
        
@@ -479,8 +552,11 @@ const StudentRegistration = () => {
         <StyledInput
           type="text"
           placeholder='First'
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          name='CountryOfCurrentSchool'
+          value={formik.values.CountryOfCurrentSchool}
+          onChange={formik.handleChange}
+          // value={studentName}
+          // onChange={(e) => setStudentName(e.target.value)}
         />
         </div> 
         
@@ -492,8 +568,11 @@ const StudentRegistration = () => {
         <StyledInput
           type="text"
           placeholder='First'
-          value={studentName}
-          onChange={(e) => setStudentName(e.target.value)}
+          name='YearOrGradeOfLeavingCurrentSchool'
+          value={formik.values.YearOrGradeOfLeavingCurrentSchool}
+          onChange={formik.handleChange}
+          // value={studentName}
+          // onChange={(e) => setStudentName(e.target.value)}
         />
         </div> 
         </div>
@@ -508,9 +587,12 @@ const StudentRegistration = () => {
             <input 
               className='m-2'
               type="radio"
-              value="male"
-              checked={gender === 'male'}
-              onChange={(e) => setGender(e.target.value)}
+              name='specialEducationalSupport'
+              chacked={formik.values.specialEducationalSupport==="no"}
+              value={formik.values.specialEducationalSupport}
+              onChange={formik.handleChange}
+              // checked={gender === 'male'}
+              // onChange={(e) => setGender(e.target.value)}
             />
             Yes
           </label>
@@ -518,9 +600,13 @@ const StudentRegistration = () => {
             <input
               className='m-2'
               type="radio"
-              value="female"
-              checked={gender === 'female'}
-              onChange={(e) => setGender(e.target.value)}
+              name='specialEducationalSupport'
+              checked={formik.values.specialEducationalSupport === "yes"}
+              value={formik.values.specialEducationalSupport === "no"}
+              onChange={formik.handleChange}
+
+              // checked={gender === 'female'}
+              // onChange={(e) => setGender(e.target.value)}
             />
             No
           </label>
@@ -529,7 +615,11 @@ const StudentRegistration = () => {
         <div style={{width: '35%',}}>
         <StyledLabel>If YES please give details</StyledLabel>
         <div style={{display: 'flex', flexDirection: 'column'}}>
-          <StyledInput/>
+          <StyledInput
+          name='specialEducationalSupportDetails'
+          value={formik.values.specialEducationalSupportDetails}
+          onChange={formik.handleChange}
+          />
         </div>
         </div>
         </div>
@@ -542,8 +632,8 @@ const StudentRegistration = () => {
               className='m-2'
               type="radio"
               value="male"
-              checked={gender === 'male'}
-              onChange={(e) => setGender(e.target.value)}
+              // checked={gender === 'male'}
+              // onChange={(e) => setGender(e.target.value)}
             />
             Yes
           </label>
@@ -552,8 +642,8 @@ const StudentRegistration = () => {
               className='m-2'
               type="radio"
               value="female"
-              checked={gender === 'female'}
-              onChange={(e) => setGender(e.target.value)}
+              // checked={gender === 'female'}
+              // onChange={(e) => setGender(e.target.value)}
             />
             No
           </label>

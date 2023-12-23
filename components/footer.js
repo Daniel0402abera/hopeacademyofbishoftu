@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import Container from "./container";
-
 export default function Footer() {
   const navigation = [
     "Product",
@@ -33,11 +32,8 @@ export default function Footer() {
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
             Within our educational community, we prioritize nurturing hopeful hearts, instilling resilience and positivity, alongside empowering young minds to envision and strive for brighter, more promising futures.
-            </div>
-
-          
+            </div>          
           </div>
-
           <div>
             <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
               {navigation.map((item, index) => (

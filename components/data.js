@@ -9,6 +9,8 @@ import {
 import curriculum from '../public/img/Curriculum1.json'
 import innovation from '../public/img/innovation.json'
 import action from '../public/img/action.json';
+import mission from '../public/img/mission.jpg'
+import vision from '../public/img/vision.jpg'
 import benefitOneImg from "../public/img/children.json";
 import benefitTwoImg from "../public/img/benefit-two.png";
 import Lottie from "lottie-react";
@@ -58,6 +60,54 @@ const benefitTwo = {
   ],
 };
 
+const Mission = {
+  title: "Our Mission Statement",
+  desc: "Developing self-expression and confidence through fashion shows, fancy dress, role plays etc.",
+  isImg: true,
+  image: mission,
+  
+  bullets: [
+    {
+      title: "Quarterly Stage presentations of the class to showcase the talent of child as an individual and in groups",
+      desc: "Then explain the first point breifly in one or two lines.",
+      icon: <Lottie animationData={curriculum}/>
+    },
+    {
+      title: "Regular acknowledgement through specially designed certificates on Appreciation Day",
+      desc: "Here you can add the next benefit point.",
+      icon: <Lottie animationData={innovation} />,
+    },
+    {
+      title: "Participation in events & celebrations ensures socio-emotional development",
+      desc: "This will be your last bullet point in this section.",
+      icon: <Lottie animationData={action}/>,
+    },
+  ],
+};
 
 
-export {benefitOne, benefitTwo};
+const Vision = {
+  title: "Our Vision Statement",
+  desc: "Developing self-expression and confidence through fashion shows, fancy dress, role plays etc.",
+  isImg: true,
+  image: vision,
+  bullets: [
+    {
+      title: "Quarterly Stage presentations of the class to showcase the talent of child as an individual and in groups",
+      desc: "Then explain the first point breifly in one or two lines.",
+      icon: <Lottie animationData={curriculum}/>
+    },
+    {
+      title: "Regular acknowledgement through specially designed certificates on Appreciation Day",
+      desc: "Here you can add the next benefit point.",
+      icon: <Lottie animationData={innovation} />,
+    },
+    {
+      title: "Participation in events & celebrations ensures socio-emotional development",
+      desc: "This will be your last bullet point in this section.",
+      icon: <Lottie animationData={action}/>,
+    },
+  ],
+};
+
+export {benefitOne, benefitTwo, Mission, Vision};

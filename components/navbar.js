@@ -1,15 +1,13 @@
+'use client'
+import React, { useState } from 'react';
 import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
 import Image from "next/image";
-import { useState } from "react";
-
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState(null);
-
   const handleHover = (index) => {
     setActiveLink(index);
   };
-
   const handleLeave = () => {
     setActiveLink(null);
   };
@@ -20,7 +18,7 @@ const Navbar = () => {
       name: "About Us",
       link: "/about",
       subLinks: [
-        { name: "Mission and Vision", link: "/about/mission-vision" },
+        { name: "Mission and Vision", link: "/mission-vision" },
         { name: "Our Values", link: "/about/values" },
         { name: "Our Team", link: "/about/team" },
         { name: "What Makes Us Different", link: "/about/different" },
@@ -59,8 +57,9 @@ const Navbar = () => {
  
   ];
 
+ 
   return (
-    <div className="w-full">
+    <div className='w-full' style={{position: 'sticky',  background: 'white', top: 0, zIndex: '999'}}>
       <nav className="flex items-center justify-between px-12 py-6">
         {/* Logo */}
         <div className="ml-12">

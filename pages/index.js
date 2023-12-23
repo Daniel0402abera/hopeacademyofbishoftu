@@ -3,10 +3,9 @@ import Head from "next/head";
 import Hero from "../components/hero";
 import Navbar from "../components/navbar";
 import SectionTitle from "../components/sectionTitle";
-
 import { benefitOne, benefitTwo } from "../components/data";
 import Video from "../components/video";
-import Benefits from "../components/benefits";
+import Card from "../components/card";
 import Footer from "../components/footer";
 import Testimonials from "../components/testimonials";
 import Faq from "../components/faq";
@@ -30,9 +29,9 @@ const Home = () => {
         title=" Why should you choose Hope Academy?">
         Sound Foundation for Life, Scientifically Design Curriculum For Perfect Holistic Development.<br/> We are committed to shaping the future through our children.
       </SectionTitle>
-      <Benefits data={benefitOne} />
-      <Benefits imgPos="right" data={benefitTwo} />
-      {/* <Benefits imgPos="right" data={benefitTwo} /> */}
+      <Card data={benefitOne} />
+      <Card imgPos="right" data={benefitTwo} />
+      {/* <Card imgPos="right" data={benefitTwo} /> */}
       <SectionTitle
         pretitle="Watch a video"
         title="Overview of the school">

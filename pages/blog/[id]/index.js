@@ -42,13 +42,6 @@ const BlogDescription = styled.p`
   color: #555;
   font-size: 1rem;
 `;
-const ReadMoreButton = styled.button`
-  border: none;
-  background: none;
-  color: #007bff;
-  cursor: pointer;
-  outline: none;
-`;
 const BlogDetails = ({ params }) => {
    const router = useRouter();
     const { id } = router.query; 

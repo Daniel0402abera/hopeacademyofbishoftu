@@ -1,9 +1,9 @@
-import Image from "next/image";
 import React from "react";
 import Container from "./container";
 import Lottie from "lottie-react";
+import Image from "next/image";
 
-const Benefits = (props) => {
+const Card = (props) => {
   const { data } = props;
   return (
     <>
@@ -13,7 +13,7 @@ const Benefits = (props) => {
             props.imgPos === "right" ? "lg:order-1" : ""
           }`}>
           <div>
-            <Lottie animationData={data.image}/>
+            {data?.isImg ? <Image  src={data.image} alt="image"/> : <Lottie animationData={data.image}/>}
           </div>
         </div>
         <div
@@ -49,11 +49,6 @@ function Benefit(props) {
   return (
     <>
       <div className="flex items-start mt-8 space-x-3">
-        <div className="flex items-center justify-center flex-shrink-0 mt-1  rounded-md w-44 h-11 ">
-          {React.cloneElement(props.icon, {
-            className: "",
-          })}
-        </div>
         <div>
           <h4 className="text-xl font-medium text-dark-blue dark:text-gray-200">
             {props.title}
@@ -67,4 +62,4 @@ function Benefit(props) {
   );
 }
 
-export default Benefits;
+export default Card;
