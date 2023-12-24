@@ -1,4 +1,3 @@
-import Listers from "../../components/Lister";
 import SectionTitle from "../../components/sectionTitle";
 import { Mission } from "../../components/data";
 import { Vision}  from '../../components/data';

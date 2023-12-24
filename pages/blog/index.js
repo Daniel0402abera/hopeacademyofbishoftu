@@ -14,7 +14,7 @@ const CardContainer = styled.div`
 
 export default function Blog(){
  
-  let endpoint = `https://hopeschool.onrender.com/api/blogs?populate=*`;
+  let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/blogs?populate=*`;
   const {
     data: blog,
     isLoading: loading,

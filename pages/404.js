@@ -36,7 +36,7 @@ const NotFoundPage = () => {
     <Container>
       <Title>404 - Not Found</Title>
       <Description>
-        The page you are looking for might have been removed or is temporarily unavailable.
+        We're sorry, but the page you're looking for is currently under construction.
       </Description>
       <Link href="/">
         <StyledLink>Go back to the home page</StyledLink>
