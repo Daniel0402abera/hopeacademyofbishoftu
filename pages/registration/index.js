@@ -390,6 +390,7 @@ const StudentRegistration = () => {
             name='currentGradeLevel'
             value={formik.values.currentGradeLevel}
             onChange={formik.handleChange}
+          
             >
               <option disabled>--- select grade ----</option>
               <option>LKG</option>
@@ -411,6 +412,7 @@ const StudentRegistration = () => {
             name='GradeLevelApplyingFor'
             value={formik.values.GradeLevelApplyingFor}
             onChange={formik.handleChange}
+
             >
               <option disabled>--- select grade ----</option>
               <option>LKG</option>
@@ -548,7 +550,7 @@ const StudentRegistration = () => {
         <StyledLabel>Address of the School</StyledLabel>
         <StyledInput
           type="text"
-          placeholder='First'
+          placeholder='Address'
           name='CountryOfCurrentSchool'
           value={formik.values.CountryOfCurrentSchool}
           onChange={formik.handleChange}
@@ -561,7 +563,6 @@ const StudentRegistration = () => {
         
         <StyledInput
           type="text"
-          placeholder='First'
           name='YearOrGradeOfLeavingCurrentSchool'
           value={formik.values.YearOrGradeOfLeavingCurrentSchool}
           onChange={formik.handleChange}
