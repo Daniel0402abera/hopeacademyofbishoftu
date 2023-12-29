@@ -173,7 +173,7 @@ const StudentRegistration = () => {
     },
       onSubmit: async (values, { setSubmitting }) => {
       try {
-        const result = await postData('https://hopeschool.onrender.com/api/students', values); 
+        const result = await postData(`${process.env.NEXT_PUBLIC_BASE_URL}api/students`, values); 
         console.log('Form submitted successfully:', result);
       } catch (error) {
         console.error('Error submitting form:', error.message);

@@ -45,7 +45,7 @@ const BlogDescription = styled.p`
 const BlogDetails = ({ params }) => {
    const router = useRouter();
     const { id } = router.query; 
-    let endpoints = `https://hopeschool.onrender.com/api/blogs/${id}?populate=*`;
+    let endpoints = `${process.env.NEXT_PUBLIC_BASE_URL}api/blogs/${id}?populate=*`;
 
     const {
         data: blog,
