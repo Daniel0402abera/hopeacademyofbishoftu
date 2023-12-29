@@ -20,7 +20,6 @@ const StyledInput = styled.input`
     border-color: #6b7280;
   }
 `;
-
 const StyledLabel = styled.label`
   display: inline-block;
   font-family: 'Roboto', sans-serif;
@@ -41,7 +40,6 @@ const StyledTextArea = styled('textarea')`
     border-color: #1976d2; 
   }
 `;
-
 const StyledSelect = styled.select`
   appearance: none;
   outline: none;
@@ -93,9 +91,6 @@ const StyledButton = styled.button`
     border-color: #6a5acd !important; /* Slate blue */
   }
 `;
-
-
-
 const RegistrationFormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -111,7 +106,6 @@ const RegistrationFormContainer = styled.div`
     width: 50%;
   }
 `;
-
 const Page = styled.div`
   display: flex;
   justify-content: center;
@@ -121,7 +115,6 @@ const Page = styled.div`
   min-height: 100vh; 
   background-color: #dfe4df; 
 `;
-
 const Header = styled.div`
   margin: 30px;
   display: flex;
@@ -129,7 +122,6 @@ const Header = styled.div`
   align-items: center;
   width: 100%;
 `;
-
 const Address = styled.div`
   margin: 50px 0px;
   display: flex;
@@ -138,7 +130,6 @@ const Address = styled.div`
   align-items: center;
   width: 100%;
 `;
-
 const StudentRegistration = () => {
  const {
     postData,
@@ -151,31 +142,33 @@ const StudentRegistration = () => {
         "firstName": "",
         "lastName": "",
         "middleName": "",
-        "dob": "2023-01-01",
+        "dob": "",
         // "placeOfBirth": "fincha",
-        "gender": "Male",
+        "phoneNumberM" : "",
+        "phoneNumberF": "",
+        "gender": "",
         "nationality": "",
         //religion is missing
         "motherTongue": "",
         "otherLanguage": "",
         //english fluency
-        "currentGradeLevel": "G1",
-        "GradeLevelApplyingFor": "G1",
+        "currentGradeLevel": "",
+        "GradeLevelApplyingFor": "",
         "applyingForYear": "",
         //remove mother title
         // "motherTitle": "Ms",
         "motherFullName": "",
-        "email": "hope@gmail.com",
+        "email": "",
         //remove father title
         // "fatherTitle": "Bikala",
         "fatherFullName": "",
         "NameOfCurrentSchool": "",
         "CountryOfCurrentSchool": "",
-        "YearOrGradeOfLeavingCurrentSchool": "2023-01-01",
-        // "specialEducationalSupport": true,
+        "YearOrGradeOfLeavingCurrentSchool": "",
+        "specialEducationalSupport": "",
         "specialEducationalSupportDetails": "",
+        "Doesyourchildreceivespecialeducationalsupportathishercurrentschool": "",
         //missing fields here
-
         "religion": "",
     },
       onSubmit: async (values, { setSubmitting }) => {
@@ -189,7 +182,6 @@ const StudentRegistration = () => {
       }
     },
   }) 
-
   return (
     <Page>
         <RegistrationFormContainer>
@@ -220,15 +212,16 @@ const StudentRegistration = () => {
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px', }}> 
         <StyledInput 
-           style={{width: '32%'}} 
+          style={{width: '32%'}} 
           type="text"
           placeholder='First'
           name='firstName'
           value={formik.values.firstName}
           onChange={formik.handleChange}
+          required
         />
         <StyledInput
-        style={{width: '32%'}} 
+          style={{width: '32%'}} 
           type="text"
           name='middleName'
           value={formik.values.middleName}
@@ -242,6 +235,7 @@ const StudentRegistration = () => {
           name='lastName'
           value={formik.values.lastName}
           onChange={formik.handleChange}
+          required
         />
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px'}}>
@@ -252,74 +246,76 @@ const StudentRegistration = () => {
           name='dob'
           value={formik.values.dob}
           onChange={formik.handleChange}
+          required
         />
           </div>
           <div style={{display: 'flex', flexDirection: 'column', width: '32%', justifyContent: 'center'}}>
           <StyledLabel>Gender</StyledLabel>
-           <div>
-           <label className='m-2'>
-            <input 
-              className='m-2'
-              type="radio"
-              name='gender'
-              checked={formik.values.gender === 'male'}
-              value={formik.values.gender}
-              onChange={formik.handleChange}
-            />
-            Male
-          </label>
-          <label>
-            <input
-              className='m-2'
-              type="radio"
-              name='gender'
-              value={formik.values.gender}
-              checked={formik.values.gender === 'female'}
-              onChange={formik.handleChange}
-            />
-            Female
-          </label>
-           </div>
+          <div>
+            <label className='m-2'>
+              <input 
+                className='m-2'
+                type="radio"
+                name='gender'
+                value='Male'
+                checked={formik.values.gender === 'Male'}
+                onChange={formik.handleChange}
+              />
+              Male
+            </label>
+            <label>
+              <input
+                className='m-2'
+                type="radio"
+                name='gender'
+                value='Female'
+                checked={formik.values.gender === 'Female'}
+                onChange={formik.handleChange}
+              />
+              Female
+            </label>
+          </div>
+
           </div>
         </div>
         <div>
           <StyledLabel>Religion</StyledLabel>
         <div>
-          <label className='m-2'>
-            <input
-              className='m-2'
-              type="radio"
-              name='religion'
-              value={formik.values.religion}
-              checked={formik.values.religion === 'muslim'}
-              onChange={formik.handleChange}
-            />
-            Muslim
-          </label>
+  <label className='m-2'>
+    <input
+      className='m-2'
+      type="radio"
+      name='religion'
+      value='muslim'
+      checked={formik.values.religion === 'muslim'}
+      onChange={formik.handleChange}
+    />
+    Muslim
+  </label>
 
-          <label>
-            <input
-              className='m-2'
-              type="radio"
-              name='religion'
-              value={formik.values.religion}
-              checked={formik.values.religion === 'christian'}
-              onChange={formik.handleChange}
-            />
-            Christian
-          </label>
-          <StyledInput
-          className='ml-4'
-          style={{width: '75%'}}
-          type="text"
-          placeholder='Other'
-          name='religion'
-          value={formik.values.religion}
-          checked={formik.values.religion==='other'}
-          onChange={formik.handleChange}
-        />
-        </div>
-          </div>
+  <label className='m-2'>
+    <input
+      className='m-2'
+      type="radio"
+      name='religion'
+      value='christian'
+      checked={formik.values.religion === 'christian'}
+      onChange={formik.handleChange}
+    />
+    Christian
+  </label>
+
+      <StyledInput
+        className='ml-4'
+        style={{width: 'auto'}}
+        type="text"
+        placeholder='Other'
+        name='religion'
+        value={formik.values.religion}
+        onChange={formik.handleChange}
+      />
+</div>
+</div>
         
         
       <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -338,41 +334,49 @@ const StudentRegistration = () => {
           <StyledLabel>MotherTongue</StyledLabel>
           <StyledInput
           type="text"
-          // value={dob}
-          // onChange={(e) => setDOB(e.target.value)}
+          name='motherTongue'
+          value={formik.values.motherTongue}
+          onChange={formik.handleChange}
         />
          
           </div>
           <div style={{display: 'flex', flexDirection: 'column', width: '32%'}}>
           <StyledLabel>Other Languages</StyledLabel>
-          <StyledInput/>
+          <StyledInput
+          type='text'
+          name='otherLanguage'
+          value={formik.values.otherLanguage}
+          onChange={formik.handleChange}
+          />
           </div>
 
           <div style={{display:'flex', width: '33%', flexDirection: 'column', justifyContent: 'center',}}>
           <StyledLabel>Fluent in English</StyledLabel>
-        <div>
-          <label className='m-2'>
-            <input
-              className='m-2'
-              type="radio"
-              value="Muslim"
-              // checked={gender === 'muslim'}
-              // onChange={(e) => setGender(e.target.value)}
-            />
-            Yes
-          </label>
+          <div>
+  <label className='m-2'>
+    <input
+      className='m-2'
+      type="radio"
+      name='answer'
+      value="Yes"
+      checked={formik.values.answer === 'Yes'}
+      onChange={formik.handleChange}
+    />
+    Yes
+  </label>
 
-          <label>
-            <input
-              className='m-2'
-              type="radio"
-              value="christian"
-              // checked={gender === 'christian'}
-              // onChange={(e) => setGender(e.target.value)}
-            />
-              No
-          </label>
-        </div>
+  <label className='m-2'>
+    <input
+      className='m-2'
+      type="radio"
+      name='answer'
+      value="No"
+      checked={formik.values.answer === 'No'}
+      onChange={formik.handleChange}
+    />
+    No
+  </label>
+</div>
           </div>
         </div>
 
@@ -402,10 +406,9 @@ const StudentRegistration = () => {
           
           </div>
           <div style={{display: 'flex', width: '32%', flexDirection: 'column'}}>
-          <StyledLabel>Grade level applying for?</StyledLabel>
-        
+          <StyledLabel>Grade Applying For</StyledLabel>
             <StyledSelect
-            name='GradeLevelApplingFor'
+            name='GradeLevelApplyingFor'
             value={formik.values.GradeLevelApplyingFor}
             onChange={formik.handleChange}
             >
@@ -425,12 +428,27 @@ const StudentRegistration = () => {
           </div>
           <div style={{display: 'flex', width: '32%', flexDirection: 'column'}}>
           <StyledLabel>Applying for (Year)</StyledLabel>
-            <StyledInput
-              type='date'
-              name='applyingForYear'
-              value={formik.values.applyingForYear}
-              onChange={formik.handleChange}
-            />
+          <select
+               style={{
+                minWidth: '120px', 
+                border: `1px solid #cdc9c6`,
+                padding: '6px',
+                '&:focus': {
+                  outline: 'none', 
+                  borderColor: `1px solid #cdc9c6`,
+                  boxShadow: `none  `, 
+                },
+              }}
+                name='applyingForYear'
+                value={formik.values.applyingForYear}
+                onChange={formik.handleChange}
+              >
+                {Array.from({ length: 50 }, (_, i) => (
+                  <option key={i} value={2023 - i}>
+                    {2023 - i}
+                  </option>
+                ))}
+              </select>
           </div>
         </div>
         </div>
@@ -443,32 +461,24 @@ const StudentRegistration = () => {
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px', }}> 
         <StyledInput 
-           style={{width: '32%'}} 
+           style={{width: '100%'}} 
           type="text"
-          placeholder='First'
+          placeholder="Mother's Fullname" 
           name='motherFullName'
           value={formik.motherFullName}
           onChange={formik.handleChange}
-        />
-        <StyledInput
-        style={{width: '32%'}} 
-          type="text"
-          // value={studentName}
-          placeholder='Middle'
-          // onChange={(e) => setStudentName(e.target.value)}
-        />
-        <StyledInput
-        style={{width: '32%'}} 
-          placeholder='Last'
-          type="text"
-          // value={studentName}
-          // onChange={(e) => setStudentName(e.target.value)}
+          required
         />
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px',}}>
          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', margin: '15px 0px', width: '49%'}}>
          <StyledLabel>Phone Number</StyledLabel>
-         <StyledInput />
+         <StyledInput
+         type='number'
+         name='phoneNumberM'
+         value={formik.values.phoneNumberM}
+         onChange={formik.handleChange}
+         />
          </div>
          <div style={{display: 'flex', width: '49%', flexDirection: 'column', justifyContent: 'space-between', margin: '15px 0px',}}>
          <StyledLabel>Email</StyledLabel>
@@ -479,9 +489,6 @@ const StudentRegistration = () => {
          />
          </div>
         </div>
-        
-        
-    
         </div>
 
         {/* Father's Details */}
@@ -492,41 +499,34 @@ const StudentRegistration = () => {
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px', }}> 
         <StyledInput 
-           style={{width: '32%'}} 
+           style={{width: '100%'}} 
           type="text"
-          placeholder='First'
+          placeholder="Father's Fullname"
           name='fatherFullName'
           value={formik.values.fatherFullName}
           onChange={formik.handleChange}
+          required
         />
-        <StyledInput
-        style={{width: '32%'}} 
-          type="text"
-          // value={studentName}
-          placeholder='Middle'
-          // onChange={(e) => setStudentName(e.target.value)}
-        />
-        <StyledInput
-        style={{width: '32%'}} 
-          placeholder='Last'
-          type="text"
-          // value={studentName}
-          // onChange={(e) => setStudentName(e.target.value)}
-        />
+        
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px',}}>
          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', margin: '15px 0px', width: '49%'}}>
          <StyledLabel>Phone Number</StyledLabel>
-         <StyledInput />
+         <StyledInput 
+         type='number'
+         name='phoneNumberF'
+         value={formik.values.phoneNumberF}
+         onChange={formik.handleChange}
+         />
          </div>
          <div style={{display: 'flex', width: '49%', flexDirection: 'column', justifyContent: 'space-between', margin: '15px 0px',}}>
          <StyledLabel>Email</StyledLabel>
-         <StyledInput />
+         <StyledInput 
+         type='email'
+         />
          </div>
         </div>
-     
         </div>
-           
            {/* current schooling */}
            <h1 style={{fontWeight: '600', marginTop: '25px'}}>&#x2022;&nbsp;CURRENT SCHOOLING</h1>
            <p style={{fontStyle: 'italic', marginBottom: '10px'}}>This form is to be filled by student transfred from another school to our school.</p>
@@ -541,25 +541,19 @@ const StudentRegistration = () => {
           name='NameOfCurrentSchool'
           value={formik.values.NameOfCurrentSchool}
           onChange={formik.handleChange}
-          // value={studentName}
-          // onChange={(e) => setStudentName(e.target.value)}
         />
         </div>
        
         <div style={{display: 'flex', flexDirection: 'column', width: '48%'}}>
         <StyledLabel>Address of the School</StyledLabel>
-        
         <StyledInput
           type="text"
           placeholder='First'
           name='CountryOfCurrentSchool'
           value={formik.values.CountryOfCurrentSchool}
           onChange={formik.handleChange}
-          // value={studentName}
-          // onChange={(e) => setStudentName(e.target.value)}
         />
         </div> 
-        
         </div>
         <div>
         <div style={{display: 'flex', flexDirection: 'column', width: '100%', margin: '10px 0px'}}>
@@ -571,46 +565,37 @@ const StudentRegistration = () => {
           name='YearOrGradeOfLeavingCurrentSchool'
           value={formik.values.YearOrGradeOfLeavingCurrentSchool}
           onChange={formik.handleChange}
-          // value={studentName}
-          // onChange={(e) => setStudentName(e.target.value)}
         />
         </div> 
         </div>
-      
-        
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
         <div style={{width: '65%'}}>
         <StyledLabel>It is possible that your child requires special educational support?</StyledLabel>
         <div>
-          <label className='m-2'>
-            <input 
-              className='m-2'
-              type="radio"
-              name='specialEducationalSupport'
-              chacked={formik.values.specialEducationalSupport==="no"}
-              value={formik.values.specialEducationalSupport}
-              onChange={formik.handleChange}
-              // checked={gender === 'male'}
-              // onChange={(e) => setGender(e.target.value)}
-            />
-            Yes
-          </label>
-          <label >
-            <input
-              className='m-2'
-              type="radio"
-              name='specialEducationalSupport'
-              checked={formik.values.specialEducationalSupport === "yes"}
-              value={formik.values.specialEducationalSupport === "no"}
-              onChange={formik.handleChange}
+      <label className='m-2'>
+        <input
+          className='m-2'
+          type="radio"
+          name='specialEducationalSupport'
+          checked={formik.values.specialEducationalSupport === true}
+          onChange={() => formik.setFieldValue('specialEducationalSupport', true)}
+        />
+        Yes
+      </label>
+      <label className='m-2'>
+        <input
+          className='m-2'
+          type="radio"
+          name='specialEducationalSupport'
+          checked={formik.values.specialEducationalSupport === false}
+          onChange={() => formik.setFieldValue('specialEducationalSupport', false)}
+        />
+        No
+      </label>
+    </div>
 
-              // checked={gender === 'female'}
-              // onChange={(e) => setGender(e.target.value)}
-            />
-            No
-          </label>
-        </div>
+
         </div>
         <div style={{width: '35%',}}>
         <StyledLabel>If YES please give details</StyledLabel>
@@ -627,28 +612,34 @@ const StudentRegistration = () => {
         <div style={{width: '65%'}}>
         <StyledLabel>Does your child receive special educational support at his/​her current school?</StyledLabel>
         <div>
-          <label className='m-2'>
-            <input 
-              className='m-2'
-              type="radio"
-              value="male"
-              // checked={gender === 'male'}
-              // onChange={(e) => setGender(e.target.value)}
-            />
-            Yes
-          </label>
-          <label >
-            <input
-              className='m-2'
-              type="radio"
-              value="female"
-              // checked={gender === 'female'}
-              // onChange={(e) => setGender(e.target.value)}
-            />
-            No
-          </label>
-          <p style={{fontStyle: 'italic', fontSize: '13px'}}>The school reserves the right to withdraw the place offered before or after admission in the light of incomplete disclousure.</p>
-        </div>
+  <label className='m-2'>
+    <input 
+      className='m-2'
+      type="radio"
+      name='Doesyourchildreceivespecialeducationalsupportathishercurrentschool'
+      value="Yes"
+      checked={formik.values.Doesyourchildreceivespecialeducationalsupportathishercurrentschool === 'Yes'}
+      onChange={formik.handleChange}
+    />
+    Yes
+  </label>
+  <label className='m-2'>
+    <input
+      className='m-2'
+      type="radio"
+      name='Doesyourchildreceivespecialeducationalsupportathishercurrentschool'
+      value="No"
+      checked={formik.values.Doesyourchildreceivespecialeducationalsupportathishercurrentschool === 'No'}
+      onChange={formik.handleChange}
+    />
+    No 
+  </label>
+  <p style={{ fontStyle: 'italic', fontSize: '13px' }}>
+    Some additional information or disclaimer.
+  </p>
+</div>
+
+
         </div>
         <div style={{width: '35%',}}>
         <StyledLabel>If YES please give details</StyledLabel>
@@ -663,20 +654,24 @@ const StudentRegistration = () => {
         </div>
 
         <div>
-        <h1 style={{fontWeight: '600', marginTop: '25px', marginBottom: '10px'}}>&#x2022;&nbsp;TERMS AND CONDITIONS</h1>
-        <div style={{margin: '5px 0px'}}>
-          <input type='checkbox'/> I understand that  to confirm this application I have to complete the payment of the 100 USD for registration fee
-        </div>
-        <div style={{margin: '5px 0px'}}>
-          <input type='checkbox'/> I understand that if I withdraw my application, my registration fee will NOT be refundable  
-        </div>
-        <div style={{margin: '5px 0px'}}>
-          <input type='checkbox'/> I declare that I am the child's parent/legal guardian 
-        </div>
-        <div style={{margin: '5px 0px'}}>
-          <input type='checkbox'/> I declare also that I am aware that you will contact my child's current school for a reference.
-        </div>
-        </div>
+    <h1 style={{fontWeight: '600', marginTop: '25px', marginBottom: '10px'}}>&#x2022;&nbsp;TERMS AND CONDITIONS</h1>
+    <div style={{margin: '5px 0px'}}>
+      <input style={{marginRight: '10px'}} type='checkbox' required />
+      I understand that to confirm this application I have to complete the payment of the 100 USD for the registration fee
+    </div>
+    <div style={{margin: '5px 0px'}}>
+      <input style={{marginRight: '10px'}} type='checkbox' required />
+      I understand that if I withdraw my application, my registration fee will NOT be refundable  
+    </div>
+    <div style={{margin: '5px 0px'}}>
+      <input style={{marginRight: '10px'}} type='checkbox' required />
+      I declare that I am the child's parent/legal guardian 
+    </div>
+    <div style={{margin: '5px 0px'}}>
+      <input style={{marginRight: '10px'}} type='checkbox' required />
+      I declare also that I am aware that you will contact my child's current school for a reference.
+    </div>
+  </div>
         <StyledButton type="submit">Submit</StyledButton>
       </form>
     </RegistrationFormContainer>

@@ -31,7 +31,7 @@ const benefitOne = {
       icon: <Lottie animationData={innovation} />,
     },
     {
-      title: "Promoting the concept of ‘Learning by Doing’ through all curricular and co-curricular activities",
+      title: "Promo ting the concept of ‘Learning by Doing’ through all curricular and co-curricular activities",
       desc: "This will be your last bullet point in this section.",
       icon: <Lottie animationData={action}/>,
     },

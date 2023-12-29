@@ -19,7 +19,7 @@ const Navbar = () => {
       link: "#",
       subLinks: [
         { name: "Mission and Vision", link: "/mission-vision" },
-        { name: "Our Values", link: "/about/values" },
+        { name: "Our Values", link: "/our-values" },
         { name: "Our Team", link: "/about/team" },
         { name: "What Makes Us Different", link: "/about/different" },
       ],
@@ -54,7 +54,6 @@ const Navbar = () => {
       { name: "Facilities", link: "/practical-info/facilities" },
     ],
   },
- 
   ];
 
  
