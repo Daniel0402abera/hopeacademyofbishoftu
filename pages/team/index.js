@@ -26,7 +26,7 @@ export default function Team() {
                 alt={team?.attributes?.name}
                 className="w-80 h-72 object-cover mb-4 mx-auto"
                 height="300"
-                src={team?.attributes?.profile?.data?.attributes?.url}
+                src={team?.attributes?.profile?.data?.attributes?.url || team?.attributes?.profile?.data?.attributes?.formats?.small?.url }
                 style={{
                   aspectRatio: "100/100",
                   objectFit: "cover",
