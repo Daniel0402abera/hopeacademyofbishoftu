@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import styled from 'styled-components';
 import Image from 'next/image';
 import usePostData from '../api/usePostData';
+import { useRouter } from 'next/router';
+import { Router } from 'lucide-react';
 const StyledInput = styled.input`
   appearance: none;
   outline: none;
@@ -130,7 +132,9 @@ const Address = styled.div`
   align-items: center;
   width: 100%;
 `;
+
 const StudentRegistration = () => {
+  const router = useRouter();
  const {
     postData,
     isLoading,
@@ -174,7 +178,7 @@ const StudentRegistration = () => {
       onSubmit: async (values, { setSubmitting }) => {
       try {
         const result = await postData(`${process.env.NEXT_PUBLIC_BASE_URL}api/students`, values); 
-        console.log('Form submitted successfully:', result);
+          router.push('/');  
       } catch (error) {
         console.error('Error submitting form:', error.message);
       } finally {
@@ -379,8 +383,6 @@ const StudentRegistration = () => {
 </div>
           </div>
         </div>
-
-
         {/* row 4 */}
 
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: '15px 0px'}}>
@@ -390,7 +392,6 @@ const StudentRegistration = () => {
             name='currentGradeLevel'
             value={formik.values.currentGradeLevel}
             onChange={formik.handleChange}
-          
             >
               <option disabled>--- select grade ----</option>
               <option>LKG</option>
@@ -595,8 +596,6 @@ const StudentRegistration = () => {
         No
       </label>
     </div>
-
-
         </div>
         <div style={{width: '35%',}}>
         <StyledLabel>If YES please give details</StyledLabel>

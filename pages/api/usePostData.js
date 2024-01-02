@@ -1,5 +1,7 @@
 import { useMutation } from 'react-query';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const postData = async ({ endpoint, data }) => {
   const config = {
@@ -24,16 +26,25 @@ const postData = async ({ endpoint, data }) => {
 };
 
 const usePostData = () => {
-  const mutation = useMutation(({ endpoint, data }) => postData({ endpoint, data }));
+  const mutation = useMutation(({ endpoint, data }) => postData({ endpoint, data }), {
+    onSuccess: () => {
+      toast.success('Successfully Registered!');
+    },
+    onError: (error) => {
+      console.error('Error in posting data:', error.message);
+      toast.error(error.message || 'Something went wrong please retry again!');
+    },
+  });
+
   const postDataHandler = async (endpoint, data) => {
     try {
       const result = await mutation.mutateAsync({ endpoint, data: {data} });
       return result;
     } catch (error) {
-      console.error('Error in posting data:', error.message);
       throw error;
     }
   };
+
   return {
     postData: postDataHandler,
     isLoading: mutation.isLoading,
@@ -41,4 +52,5 @@ const usePostData = () => {
     isSuccess: mutation.isSuccess,
   };
 };
+
 export default usePostData;
