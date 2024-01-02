@@ -21,7 +21,7 @@ const Navbar = () => {
         { name: "Mission and Vision", link: "/mission-vision" },
         { name: "Our Values", link: "/our-values" },
         { name: "Our Team", link: "/about/team" },
-        { name: "What Makes Us Different", link: "/about/different" },
+        { name: "What Makes Us Different", link: "/what-makes-us-diffirent" },
       ],
     },
     {
@@ -37,9 +37,9 @@ const Navbar = () => {
       name: "Our School",
       link: "#",
       subLinks: [
-        { name: "Overview", link: "/school/overview" },
-        { name: "Curriculum", link: "/school/curriculum" },
-        { name: "Our Community", link: "/school/community" },
+        { name: "Overview", link: "/overview" },
+        { name: "Curriculum", link: "/curriculum" },
+        { name: "Our Community", link: "/community" },
       ],
     },
     {
@@ -55,8 +55,6 @@ const Navbar = () => {
     ],
   },
   ];
-
- 
   return (
     <div className='w-full' style={{position: 'sticky',  background: 'white', top: 0, zIndex: '999'}}>
       <nav className="flex items-center justify-between px-12 py-6">
