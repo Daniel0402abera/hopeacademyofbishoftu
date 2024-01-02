@@ -20,7 +20,7 @@ const Navbar = () => {
       subLinks: [
         { name: "Mission and Vision", link: "/mission-vision" },
         { name: "Our Values", link: "/our-values" },
-        { name: "Our Team", link: "/about/team" },
+        { name: "Our Team", link: "/team" },
         { name: "What Makes Us Different", link: "/about/different" },
       ],
     },
