@@ -1,15 +1,14 @@
 import useGetData from "../api/useGetData";
 
 export default function Team() {
-  // let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/ourTeams?populate=*`;
-  let endpoint2 = "http://localhost:1337/api/our-teams?populate=*";
+  let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/our-teams?populate=*`;
 
   const {
     data: team,
     isLoading: loading,
     isError: error,
     isFetching: fetching,
-  } = useGetData(endpoint2);
+  } = useGetData(endpoint);
 
   console.log("team", team?.data);
 
