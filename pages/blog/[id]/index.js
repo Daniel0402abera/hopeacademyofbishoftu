@@ -53,7 +53,7 @@ const BlogDetails = ({ params }) => {
         isError: errorr,
         isFetching: fetching,
       } = useGetData(endpoints);
-      console.log(blog?.data);
+    
   return (
     
     <>

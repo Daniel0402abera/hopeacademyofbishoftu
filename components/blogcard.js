@@ -41,8 +41,6 @@ const ReadMoreButton = styled.button`
 `;
 const BlogCard = ({ imageUrl, title, description, readMore }) => {
 
-
-  console.log(readMore)
   return (
     <CardContainer>
       <BlogImage src={imageUrl} alt={title} />

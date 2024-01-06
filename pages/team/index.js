@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import useGetData from "../api/useGetData";
 
 export default function Team() {
@@ -10,7 +11,12 @@ export default function Team() {
     isFetching: fetching,
   } = useGetData(endpoint);
 
-  console.log("team", team?.data);
+
+  if (loading) {
+    return  <div style={{display:'flex',justifyContent:'center', alignItems:'center', height:'50vh'}} >
+      <CircularProgress color="primary" />
+    </div>;
+  }
 
   return (
     <section aria-labelledby="team-section" className="bg-white py-12">
@@ -26,7 +32,7 @@ export default function Team() {
                 alt={team?.attributes?.name}
                 className="w-80 h-72 object-cover mb-4 mx-auto"
                 height="300"
-                src={team?.attributes?.profile?.data?.attributes?.url}
+                src={team?.attributes?.profile?.data?.attributes?.url || team?.attributes?.profile?.data?.attributes?.formats?.small?.url }
                 style={{
                   aspectRatio: "100/100",
                   objectFit: "cover",

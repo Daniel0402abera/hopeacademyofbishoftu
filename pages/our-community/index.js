@@ -1,8 +1,8 @@
 import { CircularProgress } from "@mui/material";
-import PagesContainer from "../../components/pagesContainer";
+import PagesContainer from "../../components/pagesContainer"
 import useGetData from "../api/useGetData";
 
-export default function Curriculum() {
+export default function OurCommunity() {
 
   let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/overview?populate=*`;
   // let endpoint = 'http://localhost:1337/api/overview?populate=*';
@@ -20,7 +20,7 @@ export default function Curriculum() {
   }
 
     return (
-     <PagesContainer title={'Curriculum'} props={data}/>
+      <PagesContainer title={'Our Community'} props={data}/>
     )
   }
   

@@ -180,7 +180,7 @@ const StudentRegistration = () => {
         const result = await postData(`${process.env.NEXT_PUBLIC_BASE_URL}api/students`, values); 
           router.push('/');  
       } catch (error) {
-        console.error('Error submitting form:', error.message);
+      
       } finally {
         setSubmitting(false);
       }
