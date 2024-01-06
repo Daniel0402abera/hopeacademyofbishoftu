@@ -18,7 +18,6 @@ const PopupWidget = () => {
   const userName = useWatch({ control, name: "name", defaultValue: "Someone" });
 
   const onSubmit = async (data, e) => {
-    console.log(data);
     await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -42,7 +41,7 @@ const PopupWidget = () => {
       .catch((error) => {
         setIsSuccess(false);
         setMessage("Client Error. Please check the console.log for more info");
-        console.log(error);
+  
       });
   };
 
@@ -252,11 +251,11 @@ const PopupWidget = () => {
                         <span>
                           Powered by{" "}
                           <a
-                            href="https://Web3Forms.com"
+                            href="#"
                             className="text-gray-600"
                             target="_blank"
                             rel="noopener noreferrer">
-                            Web3Forms
+                            Hope School
                           </a>
                         </span>
                       </p>

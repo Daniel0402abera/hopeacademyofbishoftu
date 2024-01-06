@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import useGetData from "../api/useGetData";
 
 export default function Team() {
@@ -10,7 +11,12 @@ export default function Team() {
     isFetching: fetching,
   } = useGetData(endpoint);
 
-  console.log("team", team?.data);
+
+  if (loading) {
+    return  <div style={{display:'flex',justifyContent:'center', alignItems:'center', height:'50vh'}} >
+      <CircularProgress color="primary" />
+    </div>;
+  }
 
   return (
     <section aria-labelledby="team-section" className="bg-white py-12">

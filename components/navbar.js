@@ -39,7 +39,7 @@ const Navbar = () => {
       subLinks: [
         { name: "Overview", link: "/overview" },
         { name: "Curriculum", link: "/curriculum" },
-        { name: "Our Community", link: "/community" },
+        { name: "Our Community", link: "/our-community" },
       ],
     },
     {
@@ -73,6 +73,9 @@ const Navbar = () => {
           </p>
         </Link>
         </div>
+
+
+        
         
         {/* Main Navigation */}
         <ul className="hidden space-x-16 lg:flex">

@@ -31,7 +31,6 @@ const usePostData = () => {
       toast.success('Successfully Registered!');
     },
     onError: (error) => {
-      console.error('Error in posting data:', error.message);
       toast.error(error.message || 'Something went wrong please retry again!');
     },
   });
