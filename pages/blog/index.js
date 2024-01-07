@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Navbar from "../../components/navbar";
 import useGetData from "../api/useGetData";
 import CircularProgress from '@mui/material/CircularProgress';
+import PopupWidget from "../../components/popupWidget";
 const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -40,5 +41,6 @@ export default function Blog(){
       })
     }
     </CardContainer>
+    <PopupWidget />
   </>)
 }

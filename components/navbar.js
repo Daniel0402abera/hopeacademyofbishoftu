@@ -31,11 +31,11 @@ const Navbar = () => {
       name: "Admission",
       link: "#",
       subLinks: [
-        { name: "Our Fee", link: "/admission/fee" },
+        { name: "Our Fee", link: "/fee" },
         { name: "Student Registration", link: "/registration" },
       ],
     },
-    
+
     {
       name: "Our School",
       link: "#",
@@ -49,47 +49,50 @@ const Navbar = () => {
       name: "Blog",
       link: "/blog",
     },
-    { name: "Practical Informations", link: "#", 
-  
-    subLinks: [
-      { name: "Academic Calander", link: "/practical-info/academic" },
-      { name: "Uniform", link: "/practical-info/uniform" },
-      { name: "Facilities", link: "/practical-info/facilities" },
-    ],
-  },
+    {
+      name: "Practical Informations",
+      link: "#",
+
+      subLinks: [
+        { name: "Academic Calander", link: "/academic-calendar" },
+        { name: "Uniform", link: "uniform" },
+        { name: "Facilities", link: "facilities" },
+      ],
+    },
   ];
 
   return (
-    <div className="w-full" >
+    <div className="w-full">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
         {/* Logo */}
-       
 
         {/* Mobile Menu */}
         <Disclosure>
           {({ open }) => (
             <>
-
-
               <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
+                <Link href="/">
+                  <p className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
+                    <Image
+                      src="/img/h.png"
+                      alt="H"
+                      width="96"
+                      height="96"
+                      className="w-12"
+                    />
+                    <span style={{ color: "darkblue" }}>Hope Academy</span>
+                  </p>
+                </Link>
 
-              
-          <Link href="/">
-            <p className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
-              <Image src="/img/h.png" alt="H" width="96" height="96" className="w-12" />
-              <span style={{ color: "darkblue" }}>Hope Academy</span>
-            </p>
-          </Link>
-
-          
-  
-          <Disclosure.Button
+                <Disclosure.Button
                   aria-label="Toggle Menu"
-                  className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700">
+                  className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700"
+                >
                   <svg
                     className="w-6 h-6 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24">
+                    viewBox="0 0 24 24"
+                  >
                     {open && (
                       <path
                         fillRule="evenodd"
@@ -107,9 +110,8 @@ const Navbar = () => {
                 </Disclosure.Button>
 
                 <Disclosure.Panel className="flex flex-col w-full my-5 lg:hidden">
-                  {navigation.map((item, index) => (
+                  {navigation?.map((item, index) => (
                     <div key={index}>
-          
                       <Link href={item.link}>
                         <p
                           className={`block px-2 py-2 text-gray-800 dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none ${
@@ -122,7 +124,10 @@ const Navbar = () => {
                         </p>
                       </Link>
                       {activeLink === index && item.subLinks && (
-                        <ul style={{ minWidth: "250px" }} className="flex flex-col py-2 pl-4">
+                        <ul
+                          style={{ minWidth: "250px" }}
+                          className="flex flex-col py-2 pl-4"
+                        >
                           {item.subLinks.map((subItem, subIndex) => (
                             <li key={subIndex}>
                               <Link href={subItem.link}>
@@ -140,12 +145,11 @@ const Navbar = () => {
               </div>
             </>
           )}
-          
         </Disclosure>
 
         {/* Main Navigation - Desktop */}
         <ul className="hidden space-x-16 lg:flex">
-          {navigation.map((item, index) => (
+          {navigation?.map((item, index) => (
             <li
               key={index}
               className="relative"
@@ -158,7 +162,10 @@ const Navbar = () => {
                 </p>
               </Link>
               {activeLink === index && item.subLinks && (
-                <ul style={{ minWidth: "250px" }} className="flex flex-col absolute py-2">
+                <ul
+                  style={{ minWidth: "250px" }}
+                  className="flex flex-col absolute py-2"
+                >
                   {item.subLinks.map((subItem, subIndex) => (
                     <li key={subIndex}>
                       <Link href={subItem.link}>
@@ -174,12 +181,9 @@ const Navbar = () => {
           ))}
         </ul>
 
-        
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
           <ThemeChanger />
         </div>
-         
-      
       </nav>
     </div>
   );
