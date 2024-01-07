@@ -1,89 +1,41 @@
 import Link from "next/link";
 import ThemeChanger from "./DarkSwitch";
-import Image from "next/image";
+import Image from "next/image"
 import { Disclosure } from "@headlessui/react";
-import { useState } from "react";
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState(null);
-
-  const handleHover = (index) => {
-    setActiveLink(index);
-  };
-
-  const handleLeave = () => {
-    setActiveLink(null);
-  };
-
   const navigation = [
-    { name: "Home", link: "/" },
-    {
-      name: "About Us",
-      link: "#",
-      subLinks: [
-        { name: "Mission and Vision", link: "/mission-vision" },
-        { name: "Our Values", link: "/our-values" },
-        { name: "Our Team", link: "/team" },
-        { name: "What Makes Us Different", link: "/what-makes-us-diffirent" },
-      ],
-    },
-    {
-      name: "Admission",
-      link: "#",
-      subLinks: [
-        { name: "Our Fee", link: "/admission/fee" },
-        { name: "Student Registration", link: "/registration" },
-      ],
-    },
-    
-    {
-      name: "Our School",
-      link: "#",
-      subLinks: [
-        { name: "Overview", link: "/overview" },
-        { name: "Curriculum", link: "/curriculum" },
-        { name: "Our Community", link: "/our-community" },
-      ],
-    },
-    {
-      name: "Blog",
-      link: "/blog",
-    },
-    { name: "Practical Informations", link: "#", 
-  
-    subLinks: [
-      { name: "Academic Calander", link: "/practical-info/academic" },
-      { name: "Uniform", link: "/practical-info/uniform" },
-      { name: "Facilities", link: "/practical-info/facilities" },
-    ],
-  },
+    "Product",
+    "Features",
+    "Pricing",
+    "Company",
+    "Blog",
   ];
 
   return (
-    <div className="w-full" >
+    <div className="w-full">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
-        {/* Logo */}
-       
-
-        {/* Mobile Menu */}
+        {/* Logo  */}
         <Disclosure>
           {({ open }) => (
             <>
-
-
               <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
+                <Link href="/">
+                  <span className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
+                    <span>
+                      <Image
+                        src="/img/logo.svg"
+                        alt="N"
+                        width="32"
+                        height="32"
+                        className="w-8"
+                      />
+                    </span>
+                    <span>Nextly</span>
+                  </span>
+                </Link>
 
-              
-          <Link href="/">
-            <p className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
-              <Image src="/img/h.png" alt="H" width="96" height="96" className="w-12" />
-              <span style={{ color: "darkblue" }}>Hope Academy</span>
-            </p>
-          </Link>
-
-          
-  
-          <Disclosure.Button
+                <Disclosure.Button
                   aria-label="Toggle Menu"
                   className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700">
                   <svg
@@ -106,10 +58,10 @@ const Navbar = () => {
                   </svg>
                 </Disclosure.Button>
 
-                <Disclosure.Panel className="flex flex-col w-full my-5 lg:hidden">
+                <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
+                  <>
                   {navigation.map((item, index) => (
                     <div key={index}>
-          
                       <Link href={item.link}>
                         <p
                           className={`block px-2 py-2 text-gray-800 dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none ${
@@ -136,15 +88,19 @@ const Navbar = () => {
                       )}
                     </div>
                   ))}
+                    <Link href="/" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5">         
+                        Get Started
+                    </Link>
+                  </>
                 </Disclosure.Panel>
               </div>
             </>
           )}
-          
         </Disclosure>
 
-        {/* Main Navigation - Desktop */}
-        <ul className="hidden space-x-16 lg:flex">
+        {/* menu  */}
+        <div className="hidden text-center lg:flex lg:items-center">
+          <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
           {navigation.map((item, index) => (
             <li
               key={index}
@@ -172,17 +128,17 @@ const Navbar = () => {
               )}
             </li>
           ))}
-        </ul>
+          </ul>
+        </div>
 
-        
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
+         
+
           <ThemeChanger />
         </div>
-         
-      
       </nav>
     </div>
   );
-};
+}
 
 export default Navbar;
