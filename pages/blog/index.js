@@ -35,7 +35,7 @@ export default function Blog(){
   <CardContainer>
     {
       blogs?.map((blog) => {
-        return fetching ? <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'darkblue', fontSize: '14px', fontWeight: '500'}}><p>Fetching blogs...</p></div> : blog ?
+        return fetching ? <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'darkblue', fontSize: '14px', fontWeight: '500'}}><CircularProgress color="primary" /></div> : blog ?
         <BlogCard readMore={`/blog/${blog.id}`} title={blog?.attributes?.Title} description={blog?.attributes?.Description[0].children[0].text} imageUrl={blog?.attributes?.img?.data[0].attributes.url}/> : 'No blogs ...'
       })
     }
