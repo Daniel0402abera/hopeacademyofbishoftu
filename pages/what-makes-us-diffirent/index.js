@@ -1,4 +1,3 @@
-'use client'
 import useGetData from '../api/useGetData';
 
 import PagesContainer from '../../components/pagesContainer';

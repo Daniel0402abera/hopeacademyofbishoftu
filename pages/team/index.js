@@ -1,5 +1,6 @@
 import { CircularProgress } from "@mui/material";
 import useGetData from "../api/useGetData";
+import  PopupWidget from '../../components/popupWidget'
 
 export default function Team() {
   let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/our-teams?populate=*`;
@@ -49,6 +50,7 @@ export default function Team() {
         </div>
 
       </div>
+      <PopupWidget />
     </section>
   );
 }
