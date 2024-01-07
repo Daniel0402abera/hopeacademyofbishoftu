@@ -13,7 +13,7 @@ const CardContainer = styled.div`
 const BlogImage = styled.img`
   width: 400px;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 `;

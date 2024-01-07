@@ -28,10 +28,14 @@ const postData = async ({ endpoint, data }) => {
 const usePostData = () => {
   const mutation = useMutation(({ endpoint, data }) => postData({ endpoint, data }), {
     onSuccess: () => {
-      toast.success('Successfully Registered!');
+      toast.success('Successfully Registered!',{
+        position: toast.POSITION.TOP_RIGHT,
+      });
     },
     onError: (error) => {
-      toast.error(error.message || 'Something went wrong please retry again!');
+      toast.error(error.message || 'Something went wrong please retry again!',{
+        position: toast.POSITION.TOP_RIGHT,
+      });
     },
   });
 
