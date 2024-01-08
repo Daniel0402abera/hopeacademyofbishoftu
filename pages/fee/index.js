@@ -1,23 +1,19 @@
 import { CircularProgress } from "@mui/material";
 import useGetData from "../api/useGetData";
+import { BallBeat } from "react-pure-loaders";
 
 export default function Fees() {
   let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/our-fees`;
   const { data, isLoading, isError, isFetching } = useGetData(endpoint);
 
   if (isLoading) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "50vh",
-        }}
-      >
-        <CircularProgress color="primary" />
-      </div>
-    );
+    return  <div style={{display:'flex',justifyContent:'center', alignItems:'center', height:'50vh'}} >
+
+      <BallBeat
+          color={'#123abc'}
+          loading={isLoading}
+        />
+    </div>;
   }
 
   return (

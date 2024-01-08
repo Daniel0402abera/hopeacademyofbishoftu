@@ -186,6 +186,9 @@ const StudentRegistration = () => {
       }
     },
   }) 
+
+
+  
   return (
     <Page>
         <RegistrationFormContainer>

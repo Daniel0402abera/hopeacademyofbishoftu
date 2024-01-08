@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar";
 import useGetData from "../api/useGetData";
 import CircularProgress from '@mui/material/CircularProgress';
 import PopupWidget from "../../components/popupWidget";
+import { BallBeat } from "react-pure-loaders";
 const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -23,9 +24,14 @@ export default function Blog(){
     isFetching: fetching,
   } = useGetData(endpoint);
   const blogs = blog?.data;
+
   if (loading) {
     return  <div style={{display:'flex',justifyContent:'center', alignItems:'center', height:'50vh'}} >
-      <CircularProgress color="primary" />
+
+      <BallBeat
+          color={'#123abc'}
+          loading={loading}
+        />
     </div>;
   }
 
