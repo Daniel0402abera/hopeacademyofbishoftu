@@ -2,11 +2,12 @@ import { CircularProgress } from "@mui/material";
 import PagesContainer from "../../components/pagesContainer"
 import useGetData from "../api/useGetData";
 import PopupWidget from "../../components/popupWidget";
+import { BallBeat } from "react-pure-loaders";
 
 export default function OurCommunity() {
 
-  let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/overview?populate=*`;
-  // let endpoint = 'http://localhost:1337/api/overview?populate=*';
+  let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}api/community?populate=*`;
+  
   const {
     data,
     isLoading,
@@ -16,7 +17,11 @@ export default function OurCommunity() {
   
   if (isLoading) {
     return  <div style={{display:'flex',justifyContent:'center', alignItems:'center', height:'50vh'}} >
-      <CircularProgress color="primary" />
+
+      <BallBeat
+          color={'#123abc'}
+          loading={isLoading}
+        />
     </div>;
   }
 
