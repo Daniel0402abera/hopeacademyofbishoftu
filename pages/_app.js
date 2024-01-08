@@ -8,13 +8,13 @@ function MyApp({ Component, pageProps }) {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>   
-    <ThemeProvider attribute="class">
+    {/* <ThemeProvider attribute="class"> */}
       <Navbar/>
       <ToastContainer 
       position="bottom-right"
       />
       <Component {...pageProps} />
-    </ThemeProvider>
+    {/* </ThemeProvider> */}
     </QueryClientProvider>
   );
 }
