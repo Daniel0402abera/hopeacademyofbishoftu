@@ -4,10 +4,13 @@ import Link from 'next/link';
 const CardContainer = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: roboto;
-  margin: 20px;
   padding: 20px;
+  margin: 20px;
   width: 400px;
-  min-height: 400px;'
+  @media (max-width: 768px) {
+    min-width: 400px;
+    margin: 10px 0px;
+  }
 `;
 
 const BlogImage = styled.img`

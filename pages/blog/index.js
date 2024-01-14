@@ -23,8 +23,7 @@ export default function Blog(){
     isError: error,
     isFetching: fetching,
   } = useGetData(endpoint);
-  const blogs = blog?.data;
-
+  const blogs = blog?.data; 
   if (loading) {
     return  <div style={{display:'flex',justifyContent:'center', alignItems:'center', height:'50vh'}} >
 
