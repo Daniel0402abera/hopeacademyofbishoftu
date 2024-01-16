@@ -9,7 +9,7 @@ const CardContainer = styled.div`
   width: 400px;
   @media (max-width: 768px) {
     min-width: 400px;
-    margin: 10px 0px;
+    margin: auto;
   }
 `;
 

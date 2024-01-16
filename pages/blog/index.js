@@ -11,7 +11,7 @@ const CardContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 50px 300px;
+  margin: auto;
 `;
 
 export default function Blog(){
